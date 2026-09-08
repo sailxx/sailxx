@@ -1,10 +1,9 @@
-- 👋 Hi, I’m @sailxx
-- 👀 I’m interested in IT
-- 🌱 I’m currently learning Programming
-- 💞️ I’m looking to collaborate on ALL
-- 📫 How to reach me Github
-- 😄 Pronouns: sailx
-- ⚡ Fun fact: no
+Hi, I'm Vlad 👋
+
+🧑‍💻 16-year-old programmer from Russia
+🚀 Currently building Fitter AI — a Telegram Mini App for calorie/macro tracking via food photos
+🌱 Learning and growing as a developer, working on my first solo product
+📫 Open to feedback and collaboration
 
 <!---
 sailxx/sailxx is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
