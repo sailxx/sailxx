@@ -16,17 +16,6 @@
 
 ### 🧑‍💻 About me
 
-```js
-const vlad = {
-  age: 16,
-  location: "Russia 🇷🇺",
-  role: "Founder @ Fitter AI",
-  currentlyBuilding: ["FITTER — AI calorie tracker", "Okto — minimalist counter & Pomodoro"],
-  learning: "something new every day 🌱",
-  fuel: "coffee ☕ + curiosity",
-};
-```
-
 - 🍎 Building **[FITTER](https://github.com/sailxx/FITTER-AI)** — snap a photo of your food, AI counts calories & macros
 - ⏱️ Made **[Okto](https://github.com/sailxx/Okto)** — one-tap counter & Pomodoro timer, no sign-up, no ads
 - 🎯 Goal: build products people actually use every day
