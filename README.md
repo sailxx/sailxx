@@ -62,24 +62,8 @@
 ### 📊 GitHub stats
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=sailxx&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sailxx&layout=compact&theme=tokyonight&hide_border=true" />
-</p>
-
-<p align="center">
   <img src="https://streak-stats.demolab.com?user=sailxx&theme=tokyonight&hide_border=true" />
 </p>
-
----
-
-### 📫 Let's connect
-
-<p align="left">
-  <a href="https://t.me/arkhitkovv"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /></a>
-  <a href="https://t.me/FitterFoodBot"><img src="https://img.shields.io/badge/FitterFoodBot-2CB67D?style=for-the-badge&logo=telegram&logoColor=white" /></a>
-</p>
-
-<p align="center"><i>⭐ If you like my projects, drop a star — it really motivates me!</i></p>
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=100&section=footer" />
