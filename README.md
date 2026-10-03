@@ -1,6 +1,6 @@
 <!-- Header -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:7F5AF0,100:2CB67D&height=180&section=header&text=Hi,%20I'm%20Vlad%20👋&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=36" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=180&section=header&text=Hi,%20I'm%20Vlad%20👋&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=36" />
 </p>
 
 <p align="center">
@@ -82,5 +82,5 @@
 <p align="center"><i>⭐ If you like my projects, drop a star — it really motivates me!</i></p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:7F5AF0,100:2CB67D&height=100&section=footer" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=100&section=footer" />
 </p>
