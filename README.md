@@ -10,9 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://t.me/FitterFoodBot"><img src="https://img.shields.io/badge/Try-@FitterFoodBot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /></a>
-  <img src="https://komarev.com/ghpvc/?username=sailxx&style=for-the-badge&color=7F5AF0&label=Profile+views" />
-</p>
+  <a href="https://t.me/FitterFoodBot"><img src="https://img.shields.io/badge/Try-@FitterFoodBot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /></a></p>
 
 ---
 
