@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img" aria-label="Vlad (sailxx): I build tiny useful products">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img" aria-label="Vlad (sailxx): I build useful products">
 <style>
 {{FONT}}
 text{font-family:"JBM",ui-monospace,Consolas,monospace}
@@ -26,7 +26,7 @@ text{font-family:"JBM",ui-monospace,Consolas,monospace}
 <rect x=".5" y=".5" width="879" height="319" rx="21.5" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
 
 <g class="r d1"><rect x="44" y="51" width="9" height="9" rx="2" fill="#c9f36b"/><text x="62" y="60" class="lb" fill="#8a9184">VLAD — SAILXX</text></g>
-<text x="44" y="130" class="r d2" font-size="50" font-weight="800" letter-spacing="-1.5" fill="#f2f4ef">I build tiny</text>
+<text x="44" y="130" class="r d2" font-size="50" font-weight="800" letter-spacing="-1.5" fill="#f2f4ef">I build</text>
 <text x="44" y="188" class="r d3" font-size="50" font-weight="800" letter-spacing="-1.5" fill="#c9f36b">useful products</text>
 <rect class="caret" x="478" y="150" width="24" height="44" rx="3" fill="#c9f36b"/>
 <text class="r d4" font-size="15" fill="#a3aa9c"><tspan x="44" y="232">16 y/o founder from Russia. I make AI bots</tspan><tspan x="44" y="256">and minimal apps, from idea to release.</tspan></text>

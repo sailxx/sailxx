@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.svg" width="100%" alt="Vlad (sailxx): I build tiny useful products. 16 y/o founder from Russia, making AI bots and minimal apps.">
+  <img src="assets/hero.svg" width="100%" alt="Vlad (sailxx): I build useful products. 16 y/o founder from Russia, making AI bots and minimal apps.">
 </p>
 
 <p align="center">
