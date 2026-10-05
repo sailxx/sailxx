@@ -14,15 +14,6 @@
 
 ---
 
-### 🧑‍💻 About me
-
-- 🍎 Building **[FITTER](https://github.com/sailxx/FITTER-AI)** — snap a photo of your food, AI counts calories & macros
-- ⏱️ Made **[Okto](https://github.com/sailxx/Okto)** — one-tap counter & Pomodoro timer, no sign-up, no ads
-- 🎯 Goal: build products people actually use every day
-- 💬 Ask me about **Telegram bots**, **AI integrations** and **JavaScript**
-
----
-
 ### 🚀 Featured projects
 
 <table>
