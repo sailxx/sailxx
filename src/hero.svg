@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img" aria-label="Vlad (sailxx): I build tiny useful products">
+<style>
+{{FONT}}
+text{font-family:"JBM",ui-monospace,Consolas,monospace}
+.lb{font-size:11px;font-weight:600;letter-spacing:2.4px;fill:#6f776a}
+.vl{font-size:15px;font-weight:600;fill:#e8ebe4}
+.r{animation:in .8s cubic-bezier(.2,.8,.2,1) backwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}.d6{animation-delay:.85s}.d7{animation-delay:1s}
+.caret{animation:blink 1.05s steps(1) infinite}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.r,.caret,.pulse{animation:none}}
+</style>
+<defs>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="#c9f36b" fill-opacity=".07"/></pattern>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(880 0) scale(420 320)"><stop offset="0" stop-color="#c9f36b" stop-opacity=".16"/><stop offset="1" stop-color="#c9f36b" stop-opacity="0"/></radialGradient>
+  <clipPath id="card"><rect width="880" height="320" rx="22"/></clipPath>
+</defs>
+<g clip-path="url(#card)">
+  <rect width="880" height="320" fill="#0f110f"/>
+  <rect width="880" height="320" fill="url(#dots)"/>
+  <rect width="880" height="320" fill="url(#glow)"/>
+</g>
+<rect x=".5" y=".5" width="879" height="319" rx="21.5" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+
+<g class="r d1"><rect x="44" y="51" width="9" height="9" rx="2" fill="#c9f36b"/><text x="62" y="60" class="lb" fill="#8a9184">VLAD — SAILXX</text></g>
+<text x="44" y="130" class="r d2" font-size="50" font-weight="800" letter-spacing="-1.5" fill="#f2f4ef">I build tiny</text>
+<text x="44" y="188" class="r d3" font-size="50" font-weight="800" letter-spacing="-1.5" fill="#c9f36b">useful products</text>
+<rect class="caret" x="478" y="150" width="24" height="44" rx="3" fill="#c9f36b"/>
+<text class="r d4" font-size="15" fill="#a3aa9c"><tspan x="44" y="232">16 y/o founder from Russia. I make AI bots</tspan><tspan x="44" y="256">and minimal apps, from idea to release.</tspan></text>
+<g class="r d5"><circle class="pulse" cx="48" cy="288" r="4" fill="#c9f36b"/><text x="62" y="292" font-size="11" font-weight="600" letter-spacing="2" fill="#6f776a">JAVASCRIPT · SVELTE · TYPESCRIPT · CLOUDFLARE · GEMINI</text></g>
+
+<line x1="580" y1="44" x2="580" y2="276" stroke="#ffffff" stroke-opacity=".08"/>
+<g class="r d4"><text x="604" y="70" class="lb">ROLE</text><text x="604" y="92" class="vl">founder &amp; creator</text></g>
+<g class="r d5"><text x="604" y="128" class="lb">NOW BUILDING</text><text x="604" y="150" class="vl" fill="#c9f36b">FITTER v2.6</text></g>
+<g class="r d6"><text x="604" y="186" class="lb">BASED</text><text x="604" y="208" class="vl">Russia</text></g>
+<g class="r d7"><text x="604" y="244" class="lb">SAY HI</text><text x="604" y="266" class="vl">@arkhitkovv</text></g>
+</svg>

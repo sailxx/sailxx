@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="96" viewBox="0 0 880 96" role="img" aria-label="Say hi on Telegram: @arkhitkovv">
+<style>
+{{FONT}}
+text{font-family:"JBM",ui-monospace,Consolas,monospace}
+.arr{animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.arr{animation:none}}
+</style>
+<rect x=".5" y=".5" width="879" height="95" rx="19.5" fill="#0f110f" stroke="#ffffff" stroke-opacity=".07"/>
+<text x="36" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="#f2f4ef">say hi</text>
+<text class="arr" x="132" y="56" font-size="22" font-weight="800" fill="#c9f36b">→</text>
+<text x="172" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="#c9f36b">@arkhitkovv</text>
+<text x="844" y="54" text-anchor="end" font-size="11" font-weight="600" letter-spacing="2.2" fill="#6f776a">ON TELEGRAM</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="290" viewBox="0 0 430 290" role="img" aria-label="Okto: planner, tasks, calendar, pomodoro and a one-tap counter">
+<style>
+{{FONT}}
+text{font-family:"JBM",ui-monospace,Consolas,monospace}
+.row{font-size:12.5px;fill:#5f5f5c}
+.mk{fill:#d33a3f;font-weight:700}
+.col{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:.15}}
+@media (prefers-reduced-motion:reduce){.col{animation:none}}
+</style>
+<rect x=".5" y=".5" width="429" height="289" rx="19.5" fill="#f3f3f1" stroke="#e4e4e1"/>
+
+<text x="28" y="44" font-size="11" font-weight="600" letter-spacing="2.4" fill="#5f5f5c">PLANNER · FOCUS</text>
+<text x="28" y="88" font-size="38" font-weight="800" letter-spacing="-1.2" fill="#141414">Okto</text>
+<text font-size="14" font-weight="500" fill="#141414"><tspan x="28" y="118">Tasks, calendar, pomodoro</tspan><tspan x="28" y="138">and a one-tap counter.</tspan></text>
+
+<g transform="translate(296 52)">
+  <rect width="110" height="70" rx="5" fill="#ffffff" stroke="#cfcfcc"/>
+  <rect x="6" y="6" width="98" height="58" rx="2" fill="#e9eae5" stroke="#d6d7d1"/>
+  <circle cx="16" cy="17" r="3" fill="#d33a3f"/>
+  <text x="24" y="20" font-size="8.5" font-weight="700" letter-spacing="1.6" fill="#5a5a57">FOCUS</text>
+  <text x="55" y="52" text-anchor="middle" font-size="25" font-weight="700" letter-spacing="-1" fill="#111111">25<tspan class="col">:</tspan>00</text>
+</g>
+
+<text class="row" x="28" y="176"><tspan class="mk">› </tspan>minimal · free · no ads</text>
+<text class="row" x="28" y="198"><tspan class="mk">› </tspan>RU / EN · installable PWA</text>
+<text class="row" x="28" y="220"><tspan class="mk">› </tspan>Svelte 5 · TypeScript · Firebase</text>
+
+<rect x="28" y="240" width="202" height="28" rx="14" fill="#141414"/>
+<text x="44" y="258" font-size="12" font-weight="700" fill="#ffffff">▶ sailxx.github.io/Okto</text>
+</svg>
