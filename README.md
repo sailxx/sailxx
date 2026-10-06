@@ -8,5 +8,10 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/sailxx/Budila"><img src="assets/budila.svg" width="49%" alt="Budila: a calm Material 3 alarm clock for Android, no ads, offline"></a>
+  <a href="https://github.com/sailxx/TrayMixer"><img src="assets/traymixer.svg" width="49%" alt="TrayMixer: every device and app volume in one Windows 11 tray window"></a>
+</p>
+
+<p align="center">
   <a href="https://t.me/arkhitkovv"><img src="assets/footer.svg" width="100%" alt="Say hi on Telegram: @arkhitkovv"></a>
 </p>
