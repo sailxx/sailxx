@@ -32,7 +32,7 @@ text{font-family:"JBM",ui-monospace,Consolas,monospace}
   <g class="k3"><circle cx="72" cy="52.5" r="5.5" fill="#3d404b"/><circle cx="72" cy="52.5" r="3" fill="#4cc2ff"/></g>
 </g>
 
-<text class="row" x="28" y="176"><tspan class="mk">› </tspan>one click · per-app sliders · mute</text>
+<text class="row" x="28" y="176"><tspan class="mk">› </tspan>per-app volume · brightness · mute</text>
 <text class="row" x="28" y="198"><tspan class="mk">› </tspan>no install · no admin · no network</text>
 <text class="row" x="28" y="220"><tspan class="mk">› </tspan>C# · ~2 MB RAM · 165 KB exe</text>
 

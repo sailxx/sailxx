@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="430" height="290" viewBox="0 0 430 290" role="img" aria-label="Budila: a calm alarm clock for Android, no ads, offline, 9 themes">
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="290" viewBox="0 0 430 290" role="img" aria-label="Budila: a calm alarm clock for Android, no ads, offline, 17 themes">
 <style>
 {{FONT}}
 text{font-family:"JBM",ui-monospace,Consolas,monospace}
@@ -30,7 +30,7 @@ text{font-family:"JBM",ui-monospace,Consolas,monospace}
 </g>
 
 <text class="row" x="28" y="176"><tspan class="mk">› </tspan>no ads · offline · 1.9 MB</text>
-<text class="row" x="28" y="198"><tspan class="mk">› </tspan>gentle wake-up · tags · 9 themes</text>
+<text class="row" x="28" y="198"><tspan class="mk">› </tspan>gentle wake-up · tags · 17 themes</text>
 <text class="row" x="28" y="220"><tspan class="mk">› </tspan>Kotlin · Compose · 10 languages</text>
 
 <rect x="28" y="240" width="218" height="28" rx="14" fill="#4c5c92"/>
