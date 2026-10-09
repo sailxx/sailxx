@@ -31,7 +31,7 @@ text{font-family:"JBM",ui-monospace,Consolas,monospace}
 
 <text class="row" x="28" y="176"><tspan class="mk">› </tspan>0 permissions · offline · no ads</text>
 <text class="row" x="28" y="198"><tspan class="mk">› </tspan>mood · daily streaks · photos</text>
-<text class="row" x="28" y="220"><tspan class="mk">› </tspan>Kotlin · Compose · 3 themes</text>
+<text class="row" x="28" y="220"><tspan class="mk">› </tspan>Kotlin · Compose · 4 themes</text>
 
 <rect x="28" y="240" width="254" height="28" rx="14" fill="#4a2fc0"/>
 <text x="44" y="258" font-size="12" font-weight="700" fill="#ffffff">▶ github.com/sailxx/Okto-Notes</text>
