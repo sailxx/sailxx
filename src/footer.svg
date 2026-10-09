@@ -6,9 +6,15 @@ text{font-family:"JBM",ui-monospace,Consolas,monospace}
 @keyframes nudge{50%{transform:translateX(6px)}}
 @media (prefers-reduced-motion:reduce){.arr{animation:none}}
 </style>
-<rect x=".5" y=".5" width="879" height="95" rx="19.5" fill="#0f110f" stroke="#ffffff" stroke-opacity=".07"/>
-<text x="36" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="#f2f4ef">say hi</text>
-<text class="arr" x="132" y="56" font-size="22" font-weight="800" fill="#c9f36b">→</text>
-<text x="172" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="#c9f36b">@arkhitkovv</text>
-<text x="844" y="54" text-anchor="end" font-size="11" font-weight="600" letter-spacing="2.2" fill="#6f776a">ON TELEGRAM</text>
+<defs>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 96) scale(320 110)"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".22"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+  <linearGradient id="ink" x1="132" y1="0" x2="340" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#7dd3fc"/></linearGradient>
+  <clipPath id="c"><rect width="880" height="96" rx="20"/></clipPath>
+</defs>
+<g clip-path="url(#c)"><rect width="880" height="96" fill="#0c0d16"/><rect width="880" height="96" fill="url(#glow)"/></g>
+<rect x=".5" y=".5" width="879" height="95" rx="19.5" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+<text x="36" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="#f4f5ff">say hi</text>
+<text class="arr" x="132" y="56" font-size="22" font-weight="800" fill="#c4b5fd">→</text>
+<text x="172" y="56" font-size="22" font-weight="800" letter-spacing="-.6" fill="url(#ink)">@arkhitkovv</text>
+<text x="844" y="54" text-anchor="end" font-size="11" font-weight="600" letter-spacing="2.2" fill="#6e7193">ON TELEGRAM</text>
 </svg>

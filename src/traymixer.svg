@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="290" viewBox="0 0 430 290" role="img" aria-label="TrayMixer: every device and app volume in one Windows 11 tray window">
+<style>
+{{FONT}}
+text{font-family:"JBM",ui-monospace,Consolas,monospace}
+.row{font-size:12.5px;fill:#a2a7b0}
+.mk{fill:#4cc2ff;font-weight:700}
+.f{transform-box:fill-box;transform-origin:left;animation:grow 1.4s cubic-bezier(.2,.8,.2,1) .3s backwards}
+@keyframes grow{from{transform:scaleX(0)}}
+.k1{animation:k1 1.4s cubic-bezier(.2,.8,.2,1) .3s backwards}@keyframes k1{from{transform:translateX(-58px)}}
+.k2{animation:k2 1.4s cubic-bezier(.2,.8,.2,1) .3s backwards}@keyframes k2{from{transform:translateX(-34px)}}
+.k3{animation:k3 1.4s cubic-bezier(.2,.8,.2,1) .3s backwards}@keyframes k3{from{transform:translateX(-46px)}}
+@media (prefers-reduced-motion:reduce){.f,.k1,.k2,.k3{animation:none}}
+</style>
+<defs>
+  <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(430 0) scale(260 220)"><stop offset="0" stop-color="#4cc2ff" stop-opacity=".16"/><stop offset="1" stop-color="#4cc2ff" stop-opacity="0"/></radialGradient>
+  <clipPath id="c"><rect width="430" height="290" rx="20"/></clipPath>
+</defs>
+<g clip-path="url(#c)"><rect width="430" height="290" fill="#14151d"/><rect width="430" height="290" fill="url(#g)"/></g>
+<rect x=".5" y=".5" width="429" height="289" rx="19.5" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+
+<text x="28" y="44" font-size="11" font-weight="600" letter-spacing="2.4" fill="#8b8fa3">WINDOWS 11 · TRAY</text>
+<text x="28" y="88" font-size="38" font-weight="800" letter-spacing="-1.2" fill="#4cc2ff">TrayMixer</text>
+<text font-size="14" font-weight="500" fill="#eef0f6"><tspan x="28" y="118">Every device and app</tspan><tspan x="28" y="138">in one Mica window.</tspan></text>
+
+<g transform="translate(290 52)">
+  <rect width="116" height="70" rx="8" fill="#23252f" stroke="#ffffff" stroke-opacity=".09"/>
+  <g fill="#9aa0a8"><rect x="10" y="15" width="7" height="7" rx="2"/><rect x="10" y="32" width="7" height="7" rx="2"/><rect x="10" y="49" width="7" height="7" rx="2"/></g>
+  <g fill="#3d404b"><rect x="26" y="16.5" width="80" height="4" rx="2"/><rect x="26" y="33.5" width="80" height="4" rx="2"/><rect x="26" y="50.5" width="80" height="4" rx="2"/></g>
+  <g fill="#4cc2ff"><rect class="f" x="26" y="16.5" width="58" height="4" rx="2"/><rect class="f" x="26" y="33.5" width="34" height="4" rx="2"/><rect class="f" x="26" y="50.5" width="46" height="4" rx="2"/></g>
+  <g class="k1"><circle cx="84" cy="18.5" r="5.5" fill="#3d404b"/><circle cx="84" cy="18.5" r="3" fill="#4cc2ff"/></g>
+  <g class="k2"><circle cx="60" cy="35.5" r="5.5" fill="#3d404b"/><circle cx="60" cy="35.5" r="3" fill="#4cc2ff"/></g>
+  <g class="k3"><circle cx="72" cy="52.5" r="5.5" fill="#3d404b"/><circle cx="72" cy="52.5" r="3" fill="#4cc2ff"/></g>
+</g>
+
+<text class="row" x="28" y="176"><tspan class="mk">› </tspan>one click · per-app sliders · mute</text>
+<text class="row" x="28" y="198"><tspan class="mk">› </tspan>no install · no admin · no network</text>
+<text class="row" x="28" y="220"><tspan class="mk">› </tspan>C# · ~2 MB RAM · 165 KB exe</text>
+
+<rect x="28" y="240" width="240" height="28" rx="14" fill="#4cc2ff"/>
+<text x="44" y="258" font-size="12" font-weight="700" fill="#0d1b24">▶ github.com/sailxx/TrayMixer</text>
+</svg>
