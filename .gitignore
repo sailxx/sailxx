@@ -1,1 +1,3 @@
 .fontsrc/
+node_modules/
+.prev/
