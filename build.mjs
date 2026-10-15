@@ -154,10 +154,12 @@ function heroE(o) {
 function footer(color, mode) {
   const K = kit(color);
   const { T, fitText, delay, svg, chip, lines, wrap } = K;
-  let b = `<g class="r">${chip(40, 26, "say hi", { check: true }).s}</g>`;
-  b += `<g class="r" ${delay(1)}>${lines(40, 104, wrap("*" + ME.tg + "*", 500, 40, 800), { size: 40, weight: 800, lh: 44, spacing: "-1.2" })}</g>`;
-  b += `<g class="r" ${delay(2)}>${linkPill(K, 560, 70, "t.me/arkhitkovv", mode !== "dark").s}</g>`;
-  return svg(880, 150, "Say hi on Telegram: @arkhitkovv", b);
+  const c = chip(40, 27, "say hi", { check: true });
+  let b = `<g class="r">${c.s}</g>`;
+  b += `<g class="r" ${delay(1)}>${lines(40 + c.w + 20, 51, wrap("*" + ME.tg + "*", 500, 28, 800), { size: 28, weight: 800, lh: 32, spacing: "-.8" })}</g>`;
+  const pill = linkPill(K, 0, 26, "t.me/arkhitkovv", mode !== "dark");
+  b += `<g class="r" ${delay(2)}><g transform="translate(${840 - pill.w} 0)">${pill.s}</g></g>`;
+  return svg(880, 84, "Say hi on Telegram: @arkhitkovv", b);
 }
 
 
