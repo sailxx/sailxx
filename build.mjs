@@ -95,7 +95,7 @@ function cardE(p, o) {
   const c = p.color;
   const K = kit(c);
   const { T, fitText, wrap, lines, delay, svg, chip } = K;
-  const W = 430, H = o.mockTop ? 340 : 290;
+  const W = 430, H = o.mockTop ? 340 : 212;
   const chev = o.chev ? c : K.A.hi;
   let defs = `<linearGradient id="pl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${c}" stop-opacity="0"/><stop offset=".5" stop-color="${c}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></linearGradient>` +
     `<linearGradient id="nm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${mix(c, "#FFFFFF", 0.45)}"/><stop offset="1" stop-color="${c}"/></linearGradient>`;
@@ -113,7 +113,6 @@ ${fitText(68, y0 + 40, p.tag.toUpperCase(), 160, { size: 9.5, weight: 600, mono:
   } else {
     b += `<g class="r" ${delay(2)}>${lines(24, 104, wrap(p.desc, 200, 15, 700), { size: 15, weight: 700, lh: 20 })}</g>`;
     b += `<g class="r" ${delay(1)}>${mock(p, K, 252, 24, 154, 112)}</g>`;
-    b += `<g class="r" ${delay(3)}>${p.bullets.map((t, i) => `<text class="m" x="24" y="${170 + i * 21}" font-size="13" font-weight="700" fill="${chev}">›</text>` + fitText(40, 170 + i * 21, t, 366, { size: 13, weight: 500, fill: "#A3A3A3" })).join("")}</g>`;
   }
   // кнопка-ссылка
   const py = H - 56;
@@ -139,7 +138,6 @@ function heroE(o) {
   b += `<g class="r"><circle class="blink" cx="46" cy="49" r="4" fill="#30D158"/>${fitText(60, 54, ME.who.toUpperCase(), 400, { size: 11, weight: 600, mono: true, spacing: 1.6, fill: "#A3A3A3" })}</g>`;
   const ts = K.fitSize([ME.title], 540, 46, 800, { ls: -1.4 });
   b += `<g class="r" ${delay(1)}>${lines(40, 120, [K.one(ME.title)], { size: ts, weight: 800, lh: 54, spacing: "-1.4", hiFill: o.rainbow ? "url(#rb)" : undefined })}</g>`;
-  b += `<g class="r" ${delay(2)}>${fitText(40, 158, ME.sub, 520, { size: 16, weight: 500, fill: "#A3A3A3" })}</g>`;
   [["5", "apps", "#FFFFFF"], ["3", "platforms", "#4CC2FF"], ["10", "languages", "#30D158"], ["0", "ads", "#FF7A1A"]].forEach(([n, l, c], i) => {
     const x = 40 + i * 132;
     b += `<g class="r" ${delay(3 + i * 0.5)}>${card(x, 190, 120, 80, 16)}<text class="m" x="${x + 16}" y="226" font-size="28" font-weight="700" letter-spacing="-1" fill="${o.statColors ? c : "url(#tg)"}">${T(n)}</text>${fitText(x + 16, 254, l, 92, { size: 13, weight: 500, fill: "#A3A3A3" })}</g>`;
@@ -158,7 +156,7 @@ function footer(color, mode) {
   const { T, fitText, delay, svg, chip, lines, wrap } = K;
   let b = `<g class="r">${chip(40, 26, "say hi", { check: true }).s}</g>`;
   b += `<g class="r" ${delay(1)}>${lines(40, 104, wrap("*" + ME.tg + "*", 500, 40, 800), { size: 40, weight: 800, lh: 44, spacing: "-1.2" })}</g>`;
-  b += `<g class="r" ${delay(2)}>${fitText(560, 66, "DMs are open", 280, { size: 16, weight: 700 })}${fitText(560, 88, "Telegram · ideas, bugs, collabs", 280, { size: 13, weight: 500, fill: "#A3A3A3" })}${linkPill(K, 560, 100, "t.me/arkhitkovv", mode !== "dark").s}</g>`;
+  b += `<g class="r" ${delay(2)}>${linkPill(K, 560, 70, "t.me/arkhitkovv", mode !== "dark").s}</g>`;
   return svg(880, 150, "Say hi on Telegram: @arkhitkovv", b);
 }
 
