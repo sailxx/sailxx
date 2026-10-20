@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createKit } from "./kit.mjs";
+import { buildLogos } from "./logos.mjs";
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const OUT = arg("--out", "assets");
@@ -144,11 +145,8 @@ function heroE(o) {
     const x = 40 + i * 132;
     b += `<g class="r" ${delay(3 + i * 0.5)}>${card(x, 190, 120, 80, 16)}<text class="m" x="${x + 16}" y="226" font-size="28" font-weight="700" letter-spacing="-1" fill="${o.statColors ? c : "url(#tg)"}">${T(n)}</text>${fitText(x + 16, 254, l, 92, { size: 13, weight: 500, fill: "#A3A3A3" })}</g>`;
   });
-  ["okto", "oktonotes", "fitter", "traymixer", "budila", "flipt", "ember", "apps"].forEach((id, i) => {
-    const x = 596 + (i % 4) * 64, y = 78 + Math.floor(i / 4) * 64;
-    b += `<g class="r" ${delay(2 + i * 0.4)}>${logoAt(id, x, y, 52)}</g>`;
-  });
-  b += `<g class="r" ${delay(5)}>${chip(596, 224, "sailxx · github").s}</g>`;
+  const gh = chip(0, 0, "sailxx · github");
+  b += `<g class="r" ${delay(5)}><g transform="translate(${840 - gh.w} 224)">${gh.s}</g></g>`;
   const glows = o.multiGlow ? `<ellipse cx="660" cy="90" rx="160" ry="120" fill="url(#mg0)"/><ellipse cx="800" cy="200" rx="150" ry="120" fill="url(#mg1)"/><ellipse cx="720" cy="260" rx="160" ry="100" fill="url(#mg2)"/>` : `<ellipse cx="700" cy="140" rx="220" ry="170" fill="url(#g1)"/>`;
   return svg(880, 300, "Vlad (sailxx): I build useful products. AI bots, Android apps and minimal tools.", glows + b, defs);
 }
@@ -171,4 +169,5 @@ const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
 const jobs = [["hero.svg", () => heroE(HERO), "#BF5AF2"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#BF5AF2"), "#BF5AF2"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
+console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
