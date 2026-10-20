@@ -3,5 +3,21 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/sailxx/Okto"><img src="assets/logos/okto.svg" width="56" height="56" alt="Okto" title="Okto"></a>
+  <a href="https://github.com/sailxx/Okto-Notes"><img src="assets/logos/oktonotes.svg" width="56" height="56" alt="Okto Notes" title="Okto Notes"></a>
+  <a href="https://github.com/sailxx/FITTER-AI"><img src="assets/logos/fitter.svg" width="56" height="56" alt="FITTER" title="FITTER"></a>
+  <a href="https://github.com/sailxx/TrayMixer"><img src="assets/logos/traymixer.svg" width="56" height="56" alt="TrayMixer" title="TrayMixer"></a>
+  <a href="https://github.com/sailxx/Budila"><img src="assets/logos/budila.svg" width="56" height="56" alt="Budila" title="Budila"></a>
+  <a href="https://github.com/sailxx/Flipt"><img src="assets/logos/flipt.svg" width="56" height="56" alt="Flipt" title="Flipt"></a>
+  <a href="https://github.com/sailxx/Ember"><img src="assets/logos/ember.svg" width="56" height="56" alt="Ember" title="Ember"></a>
+  <a href="https://github.com/sailxx/Okto-Calculator"><img src="assets/logos/calc.svg" width="56" height="56" alt="Okto Calculator" title="Okto Calculator"></a>
+  <a href="https://github.com/sailxx/LifeKalendar"><img src="assets/logos/lifekalendar.svg" width="56" height="56" alt="LifeKalendar" title="LifeKalendar"></a>
+  <a href="https://github.com/sailxx/Marks"><img src="assets/logos/marks.svg" width="56" height="56" alt="Marks" title="Marks"></a>
+  <a href="https://github.com/sailxx/Okto-vscode-theme"><img src="assets/logos/vscode.svg" width="56" height="56" alt="Okto theme for VS Code" title="Okto theme for VS Code"></a>
+  <a href="https://github.com/sailxx/Arhitector-AI"><img src="assets/logos/arhitector.svg" width="56" height="56" alt="Arhitector AI" title="Arhitector AI"></a>
+  <a href="https://github.com/sailxx/sailxx.github.io"><img src="assets/logos/site.svg" width="56" height="56" alt="All apps" title="All apps"></a>
+</p>
+
+<p align="center">
   <a href="https://t.me/arkhitkovv"><img src="assets/footer.svg" width="100%" alt="Say hi on Telegram: @arkhitkovv"></a>
 </p>
