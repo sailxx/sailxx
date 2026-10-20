@@ -30,6 +30,8 @@ const LOGOS = {
     return `<g transform="scale(${s / 36})">${g}</g>`;
   },
   budila: (s) => `<g transform="scale(${s / 108})"><rect width="108" height="108" rx="30" fill="#000" stroke="#3a3a3a" stroke-width="3"/><g transform="translate(54 54) scale(1.25) translate(-54 -56)" fill="none" stroke-width="3.6" stroke-linecap="round"><path d="M54,41L54,35M61.5,43.01L64.5,37.81M66.99,48.5L72.19,45.5M69,56L75,56M66.99,63.5L72.19,66.5M61.5,68.99L64.5,74.19M54,71L54,77M46.5,68.99L43.5,74.19" stroke="#FF6A00"/><path d="M41.01,63.5L35.81,66.5M39,56L33,56M41.01,48.5L35.81,45.5M46.5,43.01L43.5,37.81" stroke="#3A3A3A"/><path d="M54,56L54,45.5M54,56L50,62.9" stroke="#fff"/></g><circle cx="54" cy="54" r="3.2" fill="#fff"/></g>`,
+  flipt: (s) => `<g transform="scale(${s / 36})"><rect width="36" height="36" rx="8.6" fill="#1E1E22" stroke="#3a3a3a"/>${[[1,1,1],[1,1,0],[1,0,0]].map((row, j) => row.map((on, i) => `<circle cx="${18 + (i - 1) * 8.1}" cy="${18 + (j - 1) * 8.1}" r="2.7" fill="#fff"${on ? "" : ' fill-opacity=".28"'}/>`).join("")).join("")}</g>`,
+  ember: (s) => `<g transform="scale(${s / 108})"><rect width="108" height="108" rx="26" fill="#000" stroke="#2a2018" stroke-width="2"/><circle cx="54" cy="54" r="46" fill="url(#lgw)"/><circle cx="54" cy="54" r="21" fill="url(#lgc)"/></g>`,
   apps: (s) => `<g transform="scale(${s / 36})"><rect width="36" height="36" rx="10" fill="#0E0E0E" stroke="#3a3a3a"/>${[[8, 8, "#FFFFFF"], [20, 8, "#FFD60A"], [8, 20, "#30D158"], [20, 20, "#FF7A1A"]].map(([x, y, c]) => `<rect x="${x}" y="${y}" width="8" height="8" rx="2.5" fill="${c}"/>`).join("")}</g>`,
 };
 const logoAt = (id, x, y, s) => `<g transform="translate(${x} ${y})">${LOGOS[id](s)}</g>`;
@@ -131,7 +133,7 @@ function heroE(o) {
   const K = o.glow ? kit("#BF5AF2") : kit("#FFFFFF");
   const { T, fitText, lines, delay, svg, chip, card } = K;
   const RB = ["#30D158", "#4CC2FF", "#BF5AF2", "#FF7A1A", "#FFD60A"];
-  const defs = ["#30D158","#FF7A1A","#4CC2FF"].map((c,i)=>`<radialGradient id="mg${i}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${c}" stop-opacity=".2"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></radialGradient>`).join("") + `<linearGradient id="rb" x1="0" y1="0" x2="1" y2="0">${RB.map((c, i) => `<stop offset="${i / (RB.length - 1)}" stop-color="${c}"/>`).join("")}</linearGradient>`;
+  const defs = ["#30D158","#FF7A1A","#4CC2FF"].map((c,i)=>`<radialGradient id="mg${i}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${c}" stop-opacity=".2"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></radialGradient>`).join("") + `<radialGradient id="lgw" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF6A1F" stop-opacity=".75"/><stop offset="1" stop-color="#FF6A1F" stop-opacity="0"/></radialGradient><radialGradient id="lgc" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="#FFF2D6"/><stop offset=".35" stop-color="#FFB23E"/><stop offset="1" stop-color="#FF6A1F"/></radialGradient>` + `<linearGradient id="rb" x1="0" y1="0" x2="1" y2="0">${RB.map((c, i) => `<stop offset="${i / (RB.length - 1)}" stop-color="${c}"/>`).join("")}</linearGradient>`;
   let b = "";
   if (o.tint) b += `<rect width="880" height="300" rx="24" fill="#BF5AF2" fill-opacity=".05"/><rect x=".5" y=".5" width="879" height="299" rx="24" fill="none" stroke="#BF5AF2" stroke-opacity=".25"/>`;
   if (o.line) b += `<rect x="40" y="0" width="800" height="2" fill="url(#rb)"/>`;
@@ -142,11 +144,11 @@ function heroE(o) {
     const x = 40 + i * 132;
     b += `<g class="r" ${delay(3 + i * 0.5)}>${card(x, 190, 120, 80, 16)}<text class="m" x="${x + 16}" y="226" font-size="28" font-weight="700" letter-spacing="-1" fill="${o.statColors ? c : "url(#tg)"}">${T(n)}</text>${fitText(x + 16, 254, l, 92, { size: 13, weight: 500, fill: "#A3A3A3" })}</g>`;
   });
-  ["okto", "oktonotes", "fitter", "traymixer", "budila", "apps"].forEach((id, i) => {
-    const x = 618 + (i % 3) * 74, y = 70 + Math.floor(i / 3) * 74;
-    b += `<g class="r" ${delay(2 + i * 0.4)}>${logoAt(id, x, y, 60)}</g>`;
+  ["okto", "oktonotes", "fitter", "traymixer", "budila", "flipt", "ember", "apps"].forEach((id, i) => {
+    const x = 596 + (i % 4) * 64, y = 78 + Math.floor(i / 4) * 64;
+    b += `<g class="r" ${delay(2 + i * 0.4)}>${logoAt(id, x, y, 52)}</g>`;
   });
-  b += `<g class="r" ${delay(5)}>${chip(618, 236, "sailxx · github").s}</g>`;
+  b += `<g class="r" ${delay(5)}>${chip(596, 224, "sailxx · github").s}</g>`;
   const glows = o.multiGlow ? `<ellipse cx="660" cy="90" rx="160" ry="120" fill="url(#mg0)"/><ellipse cx="800" cy="200" rx="150" ry="120" fill="url(#mg1)"/><ellipse cx="720" cy="260" rx="160" ry="100" fill="url(#mg2)"/>` : `<ellipse cx="700" cy="140" rx="220" ry="170" fill="url(#g1)"/>`;
   return svg(880, 300, "Vlad (sailxx): I build useful products. AI bots, Android apps and minimal tools.", glows + b, defs);
 }
