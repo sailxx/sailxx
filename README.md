@@ -17,7 +17,6 @@
   <a href="https://github.com/sailxx/Okto-Calculator"><img src="assets/logos/calc.svg" width="56" height="56" alt="Okto Calculator" title="Okto Calculator"></a>
   <a href="https://github.com/sailxx/LifeKalendar"><img src="assets/logos/lifekalendar.svg" width="56" height="56" alt="LifeKalendar" title="LifeKalendar"></a>
   <a href="https://github.com/sailxx/Marks"><img src="assets/logos/marks.svg" width="56" height="56" alt="Marks" title="Marks"></a>
-  <a href="https://github.com/sailxx/Okto-vscode-theme"><img src="assets/logos/vscode.svg" width="56" height="56" alt="Okto theme for VS Code" title="Okto theme for VS Code"></a>
   <a href="https://github.com/sailxx/Arhitector-AI"><img src="assets/logos/arhitector.svg" width="56" height="56" alt="Arhitector AI" title="Arhitector AI"></a>
 </p>
 

@@ -6,7 +6,7 @@ export const PROJECTS = [
   ["okto", "Okto", "Okto"], ["oktonotes", "Okto Notes", "Okto-Notes"], ["fitter", "FITTER", "FITTER-AI"],
   ["traymixer", "TrayMixer", "TrayMixer"], ["budila", "Budila", "Budila"], ["flipt", "Flipt", "Flipt"],
   ["ember", "Ember", "Ember"], ["calc", "Okto Calculator", "Okto-Calculator"], ["lifekalendar", "LifeKalendar", "LifeKalendar"],
-  ["marks", "Marks", "Marks"], ["vscode", "Okto theme for VS Code", "Okto-vscode-theme"],
+  ["marks", "Marks", "Marks"],
   ["arhitector", "Arhitector AI", "Arhitector-AI"]
 ];
 
