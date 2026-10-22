@@ -21,7 +21,7 @@ const SVGS = { okto: "okto.svg", vscode: "vscode.svg", arhitector: "arh.svg" };
 
 export function buildLogos(out, LOGOS) {
   fs.mkdirSync(out, { recursive: true });
-  const wrap = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" width="64" height="64"><clipPath id="c"><rect width="64" height="64" rx="15"/></clipPath><g clip-path="url(#c)">${inner}</g></svg>`;
+  const wrap = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" width="64" height="64"><clipPath id="c"><rect width="64" height="64" rx="15"/></clipPath><g clip-path="url(#c)">${inner}</g><rect x=".5" y=".5" width="63" height="63" rx="14.5" fill="none" stroke="#fff" stroke-opacity=".28"/></svg>`;
   for (const [id] of PROJECTS) {
     let inner;
     if (RASTER[id]) inner = `<image width="64" height="64" href="data:image/png;base64,${fs.readFileSync(`logos-src/${RASTER[id]}`).toString("base64")}"/>`;

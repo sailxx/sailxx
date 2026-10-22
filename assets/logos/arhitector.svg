@@ -3,4 +3,4 @@
 <radialGradient id="d" cx="0%" cy="100%" r="80%"><stop offset="0" stop-color="#b5101a"/><stop offset=".65" stop-color="#b5101a" stop-opacity="0"/></radialGradient>
 <clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath></defs>
 <g clip-path="url(#c)"><rect width="64" height="64" fill="#e8241c"/><rect width="64" height="64" fill="url(#o)"/><rect width="64" height="64" fill="url(#d)"/></g><g fill="#ffffff" shape-rendering="crispEdges"><rect x="28.8" y="19.2" width="6.4" height="6.4"/><rect x="22.4" y="25.6" width="6.4" height="6.4"/><rect x="35.2" y="25.6" width="6.4" height="6.4"/><rect x="16" y="32" width="6.4" height="6.4"/><rect x="41.6" y="32" width="6.4" height="6.4"/><rect x="16" y="38.400000000000006" width="6.4" height="6.4"/><rect x="28.8" y="38.400000000000006" width="6.4" height="6.4"/><rect x="41.6" y="38.400000000000006" width="6.4" height="6.4"/></g></svg>
-</g></svg>
+</g><rect x=".5" y=".5" width="63" height="63" rx="14.5" fill="none" stroke="#fff" stroke-opacity=".28"/></svg>
