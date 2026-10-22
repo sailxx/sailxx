@@ -232,10 +232,11 @@ function contribSvg() {
   const H = 460;
   let b = `<g class="r" shape-rendering="geometricPrecision">${cells}</g>`;
   b += `<g class="r">${fitText(40, 52, "› git contributions --visualize", 400, { size: 14, weight: 600, mono: true, fill: sub })}</g>`;
-  const stat = (x, y, big, lab, sm) => `<text x="${x}" y="${y}" font-size="24" font-weight="800" fill="${hi}">${T(String(big))}</text>${fitText(x, y + 17, lab, 100, { size: 11, weight: 700 })}${fitText(x, y + 32, sm, 120, { size: 10, fill: "#6E6E6E" })}`;
+  const lite = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#FBF6EA" stroke="#E6D9B8"/>`;
+  const stat = (x, y, big, lab, sm) => `<text x="${x}" y="${y}" font-size="24" font-weight="800" fill="#B7770A">${T(String(big))}</text>${fitText(x, y + 17, lab, 110, { size: 11, weight: 700, fill: "#16130D" })}${fitText(x, y + 32, sm, 130, { size: 10, fill: "#8A8372" })}`;
   const rng = `${fmtD(days[0].date)} → ${fmtD(days[days.length - 1].date)}`;
-  b += `<g class="r" ${delay(2)}>${fitText(556, 40, "Contributions", 200, { size: 13, weight: 700 })}${card(556, 52, 288, 78, 14)}${stat(574, 84, total, "Total", rng)}${stat(676, 84, last7, "This week", "last 7 days")}${stat(768, 84, best.contributionCount, "Best day", fmtD(best.date))}${fitText(844, 148, `Average: ${(total / days.length).toFixed(2)} / day`, 220, { size: 11, fill: "#6E6E6E", anchor: "end" })}</g>`;
-  b += `<g class="r" ${delay(3)}>${fitText(30, H - 100, "Streaks", 120, { size: 13, weight: 700 })}${card(30, H - 90, 214, 78, 14)}${stat(48, H - 58, `${longest[0]} days`, "Longest", `${fmtD(days[longest[1]].date)} → ${fmtD(days[longest[2]].date)}`)}${stat(150, H - 58, `${cur} days`, "Current", cur ? `${fmtD(days[s0 + 1].date)} → ${fmtD(days[e].date)}` : "-")}</g>`;
+  b += `<g class="r" ${delay(2)}>${fitText(556, 40, "Contributions", 200, { size: 13, weight: 700 })}${lite(556, 52, 288, 78)}${stat(574, 84, total, "Total", rng)}${stat(676, 84, last7, "This week", "last 7 days")}${stat(768, 84, best.contributionCount, "Best day", fmtD(best.date))}${fitText(844, 148, `Average: ${(total / days.length).toFixed(2)} / day`, 220, { size: 11, fill: "#6E6E6E", anchor: "end" })}</g>`;
+  b += `<g class="r" ${delay(3)}>${fitText(30, H - 100, "Streaks", 120, { size: 13, weight: 700 })}${lite(30, H - 90, 262, 78)}${stat(48, H - 58, `${longest[0]} days`, "Longest", `${fmtD(days[longest[1]].date)} → ${fmtD(days[longest[2]].date)}`)}${stat(166, H - 58, `${cur} days`, "Current", cur ? `${fmtD(days[s0 + 1].date)} → ${fmtD(days[e].date)}` : "-")}</g>`;
   b += fitText(846, H - 14, "@sailxx", 100, { size: 10, fill: "#4a4a4a", anchor: "end" });
   const tint = `<rect width="880" height="${H}" rx="24" fill="${hi}" fill-opacity=".04"/><rect x=".5" y=".5" width="879" height="${H - 1}" rx="24" fill="none" stroke="${hi}" stroke-opacity=".22"/>`;
   return svg(880, H, `git contributions: ${total} contributions in the last year`, tint + b);
