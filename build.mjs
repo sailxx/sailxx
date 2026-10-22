@@ -130,7 +130,7 @@ ${p.ver ? chip(406 - K.width("V" + p.ver, 12, 600, { mono: true, ls: 1 }) - 28, 
 }
 
 // Шапка в стиле neofetch: пиксельный персонаж с кофе слева, строки «ключ ..... значение» справа
-const PIX = { H: "#5a3a28", h: "#7d5538", S: "#f1c6a0", s: "#d9a47c", p: "#e99a8a", E: "#161616", W: "#BF5AF2", w: "#9a3fd0", M: "#f2f4ef", m: "#c4c9bd", C: "#6b3f22", J: "#3d5a8a", j: "#2d4468", B: "#e8ebe4", b: "#a3aa9c" };
+const PIX = { H: "#2a1a12", h: "#4d3224", S: "#f1c6a0", s: "#d9a47c", p: "#e99a8a", E: "#161616", W: "#463d38", w: "#2c2622", M: "#f2f4ef", m: "#c4c9bd", C: "#6b3f22", J: "#3d5a8a", j: "#2d4468", B: "#e8ebe4", b: "#a3aa9c" };
 function character(x0, y0, px) {
   let out = "";
   fs.readFileSync("hero-char.txt", "utf8").trimEnd().split(/\r?\n/).forEach((row, y) => {
@@ -155,7 +155,7 @@ const INFO = [
   ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"],
 ];
 function heroNeo() {
-  const K = kit("#BF5AF2");
+  const K = kit("#F2B84B");
   const { width, fitText, delay, svg } = K;
   const H = 476, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 8;
   const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35);
@@ -201,7 +201,7 @@ function footer(color, mode) {
 const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
-const jobs = [["hero.svg", () => heroNeo(), "#BF5AF2"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#BF5AF2"), "#BF5AF2"]];
+const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
