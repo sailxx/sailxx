@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="assets/contrib.svg" width="100%" alt="git contributions --visualize: isometric chart of GitHub contributions over the last year">
+</p>
+
+<p align="center">
   <a href="https://github.com/sailxx/Okto"><img src="assets/logos/okto.svg" width="56" height="56" alt="Okto" title="Okto"></a>
   <a href="https://github.com/sailxx/Okto-Notes"><img src="assets/logos/oktonotes.svg" width="56" height="56" alt="Okto Notes" title="Okto Notes"></a>
   <a href="https://github.com/sailxx/FITTER-AI"><img src="assets/logos/fitter.svg" width="56" height="56" alt="FITTER" title="FITTER"></a>

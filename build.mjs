@@ -3,6 +3,7 @@
 // Запуск: npm install && node build.mjs [--out папка]
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { createKit } from "./kit.mjs";
 import { buildLogos } from "./logos.mjs";
 
@@ -146,18 +147,22 @@ function character(x0, y0, px) {
 }
 const INFO = [
   ["#", "vlad@sailxx"],
-  ["Role", "founder & creator"], ["Age", "16 y/o"], ["Based", "Russia"], ["Fuel", "coffee, then code"],
-  ["#", "Stack"],
-  ["Web", "Svelte 5, TypeScript, Cloudflare Workers"], ["Android", "Kotlin, Jetpack Compose"], ["Windows", "C#, WinForms"], ["AI", "Gemini"],
+  ["OS", "Windows 11, Fedora Linux"], ["Uptime", "16 years"], ["Host", "Founder @ sailxx"], ["IDE", "VS Code, Android Studio"], ["Fuel", "coffee, then code"],
+  ["-"],
+  ["Languages.Programming", "JavaScript, TypeScript, Kotlin, C#"], ["Languages.Computer", "HTML, CSS, JSON, SVG"], ["Languages.Real", "Russian, English, Italian"],
+  ["-"],
+  ["Hobbies.Software", "UI design, games"], ["Hobbies.Hardware", "PC building"],
   ["#", "Projects"],
-  ["Now", "FITTER 3.0"], ["Also", "Okto, Okto Notes, TrayMixer, Budila, Flipt, Ember"], ["Rules", "free, offline-first, no ads"],
+  ["Now", "FITTER 3.0"], ["Also", "Okto, Okto Notes, TrayMixer, Budila, Flipt, Ember"],
   ["#", "Contact"],
   ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"],
+  ["#", "GitHub Stats"],
+  ["Repos", "17"], ["Stars", "15"], ["Commits", "607"],
 ];
 function heroNeo() {
   const K = kit("#F2B84B");
   const { width, fitText, delay, svg } = K;
-  const H = 476, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 8;
+  const H = 64 + INFO.reduce((n, r) => n + (r[0] === "-" ? 12 : r[0] === "#" ? 33 : 21), 0) - 9 + 36, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 8;
   const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35);
   let b = `<style>.eye{transform-box:fill-box;transform-origin:center;animation:eyeb 5s infinite}.st{fill:#cfd4c8;opacity:0;animation:steam 3.2s ease-out infinite}.s2{animation-delay:1s}.s3{animation-delay:2s}.bob{animation:bob 3.2s ease-in-out infinite}
 @keyframes eyeb{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}@keyframes steam{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}100%{opacity:0;transform:translate(6px,-44px)}}@keyframes bob{50%{transform:translateY(3px)}}
@@ -170,6 +175,7 @@ function heroNeo() {
   b += `<rect x="268" y="40" width="1" height="${H - 80}" fill="#fff" fill-opacity=".09"/>`;
   let y = 64, i = 0;
   for (const [k, v, em] of INFO) {
+    if (k === "-") { y += 12; continue; }
     const d = delay(2 + i++ * 0.5);
     if (k === "#") {
       if (y > 64) y += 12;
@@ -183,6 +189,56 @@ function heroNeo() {
   }
   const tint = `<rect width="880" height="${H}" rx="24" fill="${hi}" fill-opacity=".05"/><rect x=".5" y=".5" width="879" height="${H - 1}" rx="24" fill="none" stroke="${hi}" stroke-opacity=".25"/>`;
   return svg(880, H, "vlad@sailxx: Vlad, 16 y/o founder from Russia. AI bots, Android apps and minimal tools. Runs on coffee.", tint + b);
+}
+
+// Изометрические «башни» вкладов за год (данные — gh api graphql, нужен вход в gh)
+function contribData() {
+  const q = 'query{user(login:"sailxx"){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount weekday}}}}}}';
+  const cal = JSON.parse(execFileSync("gh", ["api", "graphql", "-f", `query=${q}`], { encoding: "utf8" })).data.user.contributionsCollection.contributionCalendar;
+  return { weeks: cal.weeks.map((w) => w.contributionDays), total: cal.totalContributions };
+}
+const fmtD = (d) => new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+function contribSvg() {
+  const K = kit("#F2B84B");
+  const { T, fitText, delay, svg, card, width } = K;
+  const { weeks, total } = contribData();
+  const days = weeks.flat();
+  const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35);
+  const max = Math.max(...days.map((d) => d.contributionCount), 1);
+  const best = days.reduce((a, d) => (d.contributionCount > a.contributionCount ? d : a), days[0]);
+  const last7 = days.slice(-7).reduce((s, d) => s + d.contributionCount, 0);
+  let longest = [0, 0, 0], run = 0;
+  days.forEach((d, i) => { run = d.contributionCount ? run + 1 : 0; if (run > longest[0]) longest = [run, i - run + 1, i]; });
+  let e = days.length - 1;
+  if (!days[e].contributionCount) e--;
+  let s0 = e;
+  while (s0 >= 0 && days[s0].contributionCount) s0--;
+  const cur = e - s0;
+  const W = [14.2, 5.9], D = [5, -2.8], OX = 36, OY = 112, MAXH = 62;
+  const shade = ["#1b1b1b", "#5e4513", "#93701d", "#c9952b", hi];
+  const lvl = (n) => (n === 0 ? 0 : Math.min(4, Math.ceil(Math.sqrt(n / max) * 4)));
+  const pt = (i, j, h = 0) => [OX + i * W[0] + j * D[0], OY + i * W[1] + j * D[1] - h];
+  const poly = (pts, fill, stroke) => `<polygon points="${pts.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}"${stroke ? ` stroke="${stroke}" stroke-width=".6"` : ""}/>`;
+  let cells = "";
+  weeks.forEach((wk, i) => {
+    [...wk].reverse().forEach((d) => {
+      const j = d.weekday, n = d.contributionCount, l = lvl(n), h = n ? 5 + Math.sqrt(n / max) * MAXH : 0;
+      const a = pt(i, j), b = pt(i + 0.88, j), c = pt(i + 0.88, j + 0.88), dd = pt(i, j + 0.88);
+      if (!n) { cells += poly([a, b, c, dd], "#262626", "#3a3a3a"); return; }
+      const col = shade[l], at = pt(i, j, h), bt = pt(i + 0.88, j, h), ct = pt(i + 0.88, j + 0.88, h), dt = pt(i, j + 0.88, h);
+      cells += poly([a, b, bt, at], mix(col, "#000000", 0.35)) + poly([b, c, ct, bt], mix(col, "#000000", 0.55)) + poly([at, bt, ct, dt], col);
+    });
+  });
+  const H = 460;
+  let b = `<g class="r" shape-rendering="geometricPrecision">${cells}</g>`;
+  b += `<g class="r">${fitText(40, 52, "› git contributions --visualize", 400, { size: 14, weight: 600, mono: true, fill: sub })}</g>`;
+  const stat = (x, y, big, lab, sm) => `<text x="${x}" y="${y}" font-size="24" font-weight="800" fill="${hi}">${T(String(big))}</text>${fitText(x, y + 17, lab, 100, { size: 11, weight: 700 })}${fitText(x, y + 32, sm, 120, { size: 10, fill: "#6E6E6E" })}`;
+  const rng = `${fmtD(days[0].date)} → ${fmtD(days[days.length - 1].date)}`;
+  b += `<g class="r" ${delay(2)}>${fitText(556, 40, "Contributions", 200, { size: 13, weight: 700 })}${card(556, 52, 288, 78, 14)}${stat(574, 84, total, "Total", rng)}${stat(676, 84, last7, "This week", "last 7 days")}${stat(768, 84, best.contributionCount, "Best day", fmtD(best.date))}${fitText(844, 148, `Average: ${(total / days.length).toFixed(2)} / day`, 220, { size: 11, fill: "#6E6E6E", anchor: "end" })}</g>`;
+  b += `<g class="r" ${delay(3)}>${fitText(30, H - 100, "Streaks", 120, { size: 13, weight: 700 })}${card(30, H - 90, 214, 78, 14)}${stat(48, H - 58, `${longest[0]} days`, "Longest", `${fmtD(days[longest[1]].date)} → ${fmtD(days[longest[2]].date)}`)}${stat(150, H - 58, `${cur} days`, "Current", cur ? `${fmtD(days[s0 + 1].date)} → ${fmtD(days[e].date)}` : "-")}</g>`;
+  b += fitText(846, H - 14, "@sailxx", 100, { size: 10, fill: "#4a4a4a", anchor: "end" });
+  const tint = `<rect width="880" height="${H}" rx="24" fill="${hi}" fill-opacity=".04"/><rect x=".5" y=".5" width="879" height="${H - 1}" rx="24" fill="none" stroke="${hi}" stroke-opacity=".22"/>`;
+  return svg(880, H, `git contributions: ${total} contributions in the last year`, tint + b);
 }
 
 function footer(color, mode) {
@@ -201,7 +257,7 @@ function footer(color, mode) {
 const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
-const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
+const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
