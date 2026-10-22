@@ -129,26 +129,60 @@ ${p.ver ? chip(406 - K.width("V" + p.ver, 12, 600, { mono: true, ls: 1 }) - 28, 
   return svg(W, H, `${p.name}: ${p.desc}`, b + ARC, defs);
 }
 
-// Шапка семейства: rainbow — акцент заголовка градиентом из цветов проектов
-function heroE(o) {
-  const K = o.glow ? kit("#BF5AF2") : kit("#FFFFFF");
-  const { T, fitText, lines, delay, svg, chip, card } = K;
-  const RB = ["#30D158", "#4CC2FF", "#BF5AF2", "#FF7A1A", "#FFD60A"];
-  const defs = ["#30D158","#FF7A1A","#4CC2FF"].map((c,i)=>`<radialGradient id="mg${i}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${c}" stop-opacity=".2"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></radialGradient>`).join("") + `<radialGradient id="lgw" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF6A1F" stop-opacity=".75"/><stop offset="1" stop-color="#FF6A1F" stop-opacity="0"/></radialGradient><radialGradient id="lgc" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="#FFF2D6"/><stop offset=".35" stop-color="#FFB23E"/><stop offset="1" stop-color="#FF6A1F"/></radialGradient>` + `<linearGradient id="rb" x1="0" y1="0" x2="1" y2="0">${RB.map((c, i) => `<stop offset="${i / (RB.length - 1)}" stop-color="${c}"/>`).join("")}</linearGradient>`;
-  let b = "";
-  if (o.tint) b += `<rect width="880" height="300" rx="24" fill="#BF5AF2" fill-opacity=".05"/><rect x=".5" y=".5" width="879" height="299" rx="24" fill="none" stroke="#BF5AF2" stroke-opacity=".25"/>`;
-  if (o.line) b += `<rect x="40" y="0" width="800" height="2" fill="url(#rb)"/>`;
-  b += `<g class="r"><circle class="blink" cx="46" cy="49" r="4" fill="#30D158"/>${fitText(60, 54, ME.who.toUpperCase(), 400, { size: 11, weight: 600, mono: true, spacing: 1.6, fill: "#A3A3A3" })}</g>`;
-  const ts = K.fitSize([ME.title], 540, 46, 800, { ls: -1.4 });
-  b += `<g class="r" ${delay(1)}>${lines(40, 120, [K.one(ME.title)], { size: ts, weight: 800, lh: 54, spacing: "-1.4", hiFill: o.rainbow ? "url(#rb)" : undefined })}</g>`;
-  [["5", "apps", "#FFFFFF"], ["3", "platforms", "#4CC2FF"], ["10", "languages", "#30D158"], ["0", "ads", "#FF7A1A"]].forEach(([n, l, c], i) => {
-    const x = 40 + i * 132;
-    b += `<g class="r" ${delay(3 + i * 0.5)}>${card(x, 190, 120, 80, 16)}<text class="m" x="${x + 16}" y="226" font-size="28" font-weight="700" letter-spacing="-1" fill="${o.statColors ? c : "url(#tg)"}">${T(n)}</text>${fitText(x + 16, 254, l, 92, { size: 13, weight: 500, fill: "#A3A3A3" })}</g>`;
+// Шапка в стиле neofetch: пиксельный персонаж с кофе слева, строки «ключ ..... значение» справа
+const PIX = { H: "#5a3a28", h: "#7d5538", S: "#f1c6a0", s: "#d9a47c", p: "#e99a8a", E: "#161616", W: "#BF5AF2", w: "#9a3fd0", M: "#f2f4ef", m: "#c4c9bd", C: "#6b3f22", J: "#3d5a8a", j: "#2d4468", B: "#e8ebe4", b: "#a3aa9c" };
+function character(x0, y0, px) {
+  let out = "";
+  fs.readFileSync("hero-char.txt", "utf8").trimEnd().split(/\r?\n/).forEach((row, y) => {
+    for (let x = 0; x < row.length; ) {
+      const c = row[x];
+      let n = 1;
+      while (row[x + n] === c) n++;
+      if (c !== ".") out += `<rect${c === "E" ? ' class="eye"' : ""} x="${x0 + x * px}" y="${y0 + y * px}" width="${n * px}" height="${px}" fill="${PIX[c]}"/>`;
+      x += n;
+    }
   });
-  const gh = chip(0, 0, "sailxx · github");
-  b += `<g class="r" ${delay(5)}><g transform="translate(${840 - gh.w} 224)">${gh.s}</g></g>`;
-  const glows = o.multiGlow ? `<ellipse cx="660" cy="90" rx="160" ry="120" fill="url(#mg0)"/><ellipse cx="800" cy="200" rx="150" ry="120" fill="url(#mg1)"/><ellipse cx="720" cy="260" rx="160" ry="100" fill="url(#mg2)"/>` : `<ellipse cx="700" cy="140" rx="220" ry="170" fill="url(#g1)"/>`;
-  return svg(880, 300, "Vlad (sailxx): I build useful products. AI bots, Android apps and minimal tools.", glows + b, defs);
+  return out;
+}
+const INFO = [
+  ["#", "vlad@sailxx"],
+  ["Role", "founder & creator"], ["Age", "16 y/o"], ["Based", "Russia"], ["Fuel", "coffee, then code"],
+  ["#", "Stack"],
+  ["Web", "Svelte 5, TypeScript, Cloudflare Workers"], ["Android", "Kotlin, Jetpack Compose"], ["Windows", "C#, WinForms"], ["AI", "Gemini"],
+  ["#", "Projects"],
+  ["Now", "FITTER 3.0"], ["Also", "Okto, Okto Notes, TrayMixer, Budila, Flipt, Ember"], ["Rules", "free, offline-first, no ads"],
+  ["#", "Contact"],
+  ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"],
+];
+function heroNeo() {
+  const K = kit("#BF5AF2");
+  const { width, fitText, delay, svg } = K;
+  const H = 476, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 8;
+  const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35);
+  let b = `<style>.eye{transform-box:fill-box;transform-origin:center;animation:eyeb 5s infinite}.st{fill:#cfd4c8;opacity:0;animation:steam 3.2s ease-out infinite}.s2{animation-delay:1s}.s3{animation-delay:2s}.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes eyeb{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}@keyframes steam{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}100%{opacity:0;transform:translate(6px,-44px)}}@keyframes bob{50%{transform:translateY(3px)}}
+@media (prefers-reduced-motion:reduce){.eye,.st,.bob{animation:none}.st{opacity:.5}}</style>`;
+  const cx = 40, cy = 84; // персонаж 24×36 клеток
+  b += `<ellipse cx="${cx + 12 * PX}" cy="${cy + 36 * PX + 8}" rx="${10 * PX}" ry="9" fill="#000" fill-opacity=".55"/>`;
+  b += `<g shape-rendering="crispEdges" class="r"><g class="bob">${character(cx, cy, PX)}</g>`;
+  const mx = cx + 16 * PX, my = cy + 10 * PX; // кружка: колонки 16–21, ряд 10
+  b += [[mx + 24, my - 12, ""], [mx + 40, my - 20, "s2"], [mx + 32, my - 8, "s3"]].map(([x, y, c]) => `<rect class="st ${c}" x="${x}" y="${y}" width="${PX}" height="${PX}"/>`).join("") + `</g>`;
+  b += `<rect x="268" y="40" width="1" height="${H - 80}" fill="#fff" fill-opacity=".09"/>`;
+  let y = 64, i = 0;
+  for (const [k, v, em] of INFO) {
+    const d = delay(2 + i++ * 0.5);
+    if (k === "#") {
+      if (y > 64) y += 12;
+      const w = width(v, SZ, 800, { mono: true });
+      b += `<g class="r" ${d}>${fitText(X0, y, v, 400, { size: SZ, weight: 800, mono: true, fill: hi })}<line x1="${(X0 + w + 12).toFixed(1)}" y1="${y - 4}" x2="${X1}" y2="${y - 4}" stroke="${hi}" stroke-opacity=".28"/></g>`;
+    } else {
+      const kw = width(k, SZ, 600, { mono: true }), vw = width(v, SZ, 500, { mono: true });
+      b += `<g class="r" ${d}>${fitText(X0, y, k, 200, { size: SZ, weight: 600, mono: true, fill: sub })}${fitText(X1, y, v, 400, { size: SZ, weight: em ? 700 : 500, mono: true, fill: em ? hi : "#FFFFFF", anchor: "end" })}<line x1="${(X0 + kw + 10).toFixed(1)}" y1="${y - 3}" x2="${(X1 - vw - 10).toFixed(1)}" y2="${y - 3}" stroke="#4a4a4a" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0.1 5"/></g>`;
+    }
+    y += STEP;
+  }
+  const tint = `<rect width="880" height="${H}" rx="24" fill="${hi}" fill-opacity=".05"/><rect x=".5" y=".5" width="879" height="${H - 1}" rx="24" fill="none" stroke="${hi}" stroke-opacity=".25"/>`;
+  return svg(880, H, "vlad@sailxx: Vlad, 16 y/o founder from Russia. AI bots, Android apps and minimal tools. Runs on coffee.", tint + b);
 }
 
 function footer(color, mode) {
@@ -167,7 +201,7 @@ function footer(color, mode) {
 const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
-const jobs = [["hero.svg", () => heroE(HERO), "#BF5AF2"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#BF5AF2"), "#BF5AF2"]];
+const jobs = [["hero.svg", () => heroNeo(), "#BF5AF2"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["footer.svg", () => footer("#BF5AF2"), "#BF5AF2"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
