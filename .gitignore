@@ -1,3 +1,5 @@
-.fontsrc/
 node_modules/
 .prev/
+.fontsrc/*
+!.fontsrc/golos.ttf
+!.fontsrc/jbmono.ttf

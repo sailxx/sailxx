@@ -145,6 +145,15 @@ function character(x0, y0, px) {
   });
   return out;
 }
+const gh = (...a) => execFileSync("gh", ["api", ...a], { encoding: "utf8" }).trim();
+const STATS = (() => {
+  try {
+    const repos = JSON.parse(gh("users/sailxx")).public_repos;
+    const stars = JSON.parse(gh("users/sailxx/repos?per_page=100&type=owner")).reduce((n, x) => n + x.stargazers_count, 0);
+    const commits = JSON.parse(gh("search/commits?q=author:sailxx")).total_count;
+    return [String(repos), String(stars), String(commits)];
+  } catch { return ["17", "15", "607"]; }
+})();
 const INFO = [
   ["#", "vlad@sailxx"],
   ["OS", "Windows 11, Fedora Linux"], ["Uptime", "16 years"], ["Host", "Founder @ sailxx"], ["IDE", "VS Code, Android Studio"], ["Fuel", "coffee, then code"],
@@ -157,7 +166,7 @@ const INFO = [
   ["#", "Contact"],
   ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"], ["LeetCode", "u/qXESYLd6R6"],
   ["#", "GitHub Stats"],
-  ["Repos", "17"], ["Stars", "15"], ["Commits", "607"],
+  ["Repos", STATS[0]], ["Stars", STATS[1]], ["Commits", STATS[2]],
 ];
 function heroNeo() {
   const K = kit("#F2B84B");
@@ -308,8 +317,8 @@ const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
 const LEET_USER = "qXESYLd6R6";
-const LEET = await leetData(LEET_USER);
-const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"], ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
+const LEET = await leetData(LEET_USER).catch((e) => (console.warn("leetcode: пропущено,", e.message), null));
+const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ...(LEET ? [["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"]] : []), ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
