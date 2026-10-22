@@ -22,7 +22,7 @@ const kit = (c) => { if (!kits.has(c)) kits.set(c, createKit({ ...FONTS, accent:
 const LOGOS = {
   okto: (s) => `<g transform="scale(${s / 512})"><rect width="512" height="512" rx="112" fill="#17181b" stroke="#3a3a3a" stroke-width="10"/><path d="M182.08,253.36Q160.96,349.72 104.2,356.32M220.36,274.48Q212.44,366.88 187.36,415.72M291.64,274.48Q299.56,366.88 324.64,415.72M329.92,253.36Q351.04,349.72 407.8,356.32" fill="none" stroke="#fafafa" stroke-width="34.32" stroke-linecap="round"/><path d="M150.4,184.72a105.6,105.6 0 1,1 211.2,0a105.6,105.6 0 1,1 -211.2,0zM201.88,175.48a18.48,18.48 0 1,1 36.96,0a18.48,18.48 0 1,1 -36.96,0zM273.16,175.48a18.48,18.48 0 1,1 36.96,0a18.48,18.48 0 1,1 -36.96,0z" fill="#fafafa" fill-rule="evenodd" stroke="#17181b" stroke-width="10.56" paint-order="stroke"/></g>`,
   oktonotes: (s) => `<g transform="scale(${s / 104})"><rect width="104" height="104" rx="24" fill="#FFD60A"/><path d="M14 80h76M14 90h76" stroke="#000" stroke-opacity=".1" stroke-width="2"/><g transform="translate(2 4)"><path d="M38,52q-6,12 -14,14M46,56q-2,14 -8,20M54,56q2,14 8,20" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round"/><g transform="translate(58 48) rotate(45)"><path d="M3,-4h27v8h-27z" fill="#fff"/><path d="M30,-4L38,0L30,4z" fill="#F5D0A9"/></g><circle cx="50" cy="38" r="18" fill="#161616"/><circle cx="44" cy="36" r="3.2" fill="#FFD60A"/><circle cx="56" cy="36" r="3.2" fill="#FFD60A"/></g></g>`,
-  fitter: (s) => `<g transform="scale(${s / 36})"><rect width="36" height="36" rx="10" fill="#30D158"/><g transform="translate(6 6)" fill="none" stroke="#03210C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8V6.5a3 3 0 0 1 3-3H8"/><path d="M16 3.5h1.5a3 3 0 0 1 3 3V8"/><path d="M20.5 16v1.5a3 3 0 0 1-3 3H16"/><path d="M8 20.5H6.5a3 3 0 0 1-3-3V16"/><path d="M12 9.3c-1.2-.9-3.9-1.1-4.4 1.9-.4 2.4 1.2 5.4 2.9 5.4.6 0 1-.3 1.5-.3s.9.3 1.5.3c1.7 0 3.3-3 2.9-5.4-.5-3-3.2-2.8-4.4-1.9z"/><path d="M12 9.3c0-1.3.6-2.2 1.7-2.6"/></g></g>`,
+  fitter: (s) => `<image width="${s}" height="${s}" href="data:image/png;base64,${fs.readFileSync("logos-src/fitter.png").toString("base64")}"/>`,
   traymixer: (s) => {
     let g = `<rect width="36" height="36" rx="10" fill="#0E0E0E" stroke="#3a3a3a"/>`;
     [[9, 0.72], [18, 0.3], [27, 0.55]].forEach(([y, lv]) => {
@@ -31,7 +31,7 @@ const LOGOS = {
     });
     return `<g transform="scale(${s / 36})">${g}</g>`;
   },
-  budila: (s) => `<g transform="scale(${s / 108})"><rect width="108" height="108" rx="30" fill="#000" stroke="#3a3a3a" stroke-width="3"/><g transform="translate(54 54) scale(1.25) translate(-54 -56)" fill="none" stroke-width="3.6" stroke-linecap="round"><path d="M54,41L54,35M61.5,43.01L64.5,37.81M66.99,48.5L72.19,45.5M69,56L75,56M66.99,63.5L72.19,66.5M61.5,68.99L64.5,74.19M54,71L54,77M46.5,68.99L43.5,74.19" stroke="#FF6A00"/><path d="M41.01,63.5L35.81,66.5M39,56L33,56M41.01,48.5L35.81,45.5M46.5,43.01L43.5,37.81" stroke="#3A3A3A"/><path d="M54,56L54,45.5M54,56L50,62.9" stroke="#fff"/></g><circle cx="54" cy="54" r="3.2" fill="#fff"/></g>`,
+  budila: (s) => { const D = JSON.parse(fs.readFileSync("logos-src/budila-dots.json", "utf8")); return `<g transform="scale(${s / 108})"><rect width="108" height="108" rx="30" fill="#000" stroke="#3a3a3a" stroke-width="3"/><g transform="translate(54 54) scale(1.7) translate(-56.5 -55)"><path fill="#262626" d="${D.off}"/><path fill="#FF6A00" d="${D.lit}"/></g></g>`; },
   flipt: (s) => `<g transform="scale(${s / 36})"><rect width="36" height="36" rx="8.6" fill="#1E1E22" stroke="#3a3a3a"/>${[[1,1,1],[1,1,0],[1,0,0]].map((row, j) => row.map((on, i) => `<circle cx="${18 + (i - 1) * 8.1}" cy="${18 + (j - 1) * 8.1}" r="2.7" fill="#fff"${on ? "" : ' fill-opacity=".28"'}/>`).join("")).join("")}</g>`,
   ember: (s) => `<g transform="scale(${s / 108})"><rect width="108" height="108" rx="26" fill="#000" stroke="#2a2018" stroke-width="2"/><circle cx="54" cy="54" r="46" fill="url(#lgw)"/><circle cx="54" cy="54" r="21" fill="url(#lgc)"/></g>`,
   apps: (s) => `<g transform="scale(${s / 36})"><rect width="36" height="36" rx="10" fill="#0E0E0E" stroke="#3a3a3a"/>${[[8, 8, "#FFFFFF"], [20, 8, "#FFD60A"], [8, 20, "#30D158"], [20, 20, "#FF7A1A"]].map(([x, y, c]) => `<rect x="${x}" y="${y}" width="8" height="8" rx="2.5" fill="${c}"/>`).join("")}</g>`,
@@ -155,7 +155,7 @@ const INFO = [
   ["#", "Projects"],
   ["Now", "FITTER 3.0"], ["Also", "Okto, Okto Notes, TrayMixer, Budila, Flipt, Ember"],
   ["#", "Contact"],
-  ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"],
+  ["Telegram", "@arkhitkovv", true], ["GitHub", "github.com/sailxx"], ["LeetCode", "u/qXESYLd6R6"],
   ["#", "GitHub Stats"],
   ["Repos", "17"], ["Stars", "15"], ["Commits", "607"],
 ];
@@ -191,6 +191,69 @@ function heroNeo() {
   return svg(880, H, "vlad@sailxx: Vlad, 16 y/o founder from Russia. AI bots, Android apps and minimal tools. Runs on coffee.", tint + b);
 }
 
+// Изометрическая сетка: weeks — колонки по 7 дней {weekday, contributionCount}; shade — 5 цветов от пустого к максимуму
+function isoCells(weeks, shade) {
+  const max = Math.max(...weeks.flat().map((d) => d.contributionCount), 1);
+  const W = [14.2, 5.9], D = [5, -2.8], OX = 36, OY = 112, MAXH = 62;
+  const lvl = (n) => (n === 0 ? 0 : Math.min(4, Math.ceil(Math.sqrt(n / max) * 4)));
+  const pt = (i, j, h = 0) => [OX + i * W[0] + j * D[0], OY + i * W[1] + j * D[1] - h];
+  const poly = (pts, fill, stroke) => `<polygon points="${pts.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}"${stroke ? ` stroke="${stroke}" stroke-width=".6"` : ""}/>`;
+  let cells = "";
+  weeks.forEach((wk, i) => {
+    [...wk].reverse().forEach((d) => {
+      const j = d.weekday, n = d.contributionCount, h = n ? 5 + Math.sqrt(n / max) * MAXH : 0;
+      const a = pt(i, j), b = pt(i + 0.88, j), c = pt(i + 0.88, j + 0.88), dd = pt(i, j + 0.88);
+      if (!n) { cells += poly([a, b, c, dd], "#262626", "#3a3a3a"); return; }
+      const col = shade[lvl(n)], at = pt(i, j, h), bt = pt(i + 0.88, j, h), ct = pt(i + 0.88, j + 0.88, h), dt = pt(i, j + 0.88, h);
+      cells += poly([a, b, bt, at], mix(col, "#000000", 0.35)) + poly([b, c, ct, bt], mix(col, "#000000", 0.55)) + poly([at, bt, ct, dt], col);
+    });
+  });
+  return cells;
+}
+const lite = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#FBF6EA" stroke="#E6D9B8"/>`;
+
+// LeetCode: решённые задачи и календарь отправок (публичный GraphQL, без входа)
+async function leetData(user) {
+  const q = "query($u:String!){allQuestionsCount{difficulty count} matchedUser(username:$u){submitStats{acSubmissionNum{difficulty count submissions}} userCalendar{totalActiveDays submissionCalendar}}}";
+  const r = await fetch("https://leetcode.com/graphql", { method: "POST", headers: { "content-type": "application/json", referer: "https://leetcode.com" }, body: JSON.stringify({ query: q, variables: { u: user } }) });
+  const d = (await r.json()).data;
+  const by = (arr, k) => Object.fromEntries(arr.map((x) => [x.difficulty, x[k]]));
+  const cal = JSON.parse(d.matchedUser.userCalendar.submissionCalendar || "{}");
+  const today = new Date(); today.setUTCHours(0, 0, 0, 0);
+  const start = new Date(today); start.setUTCDate(start.getUTCDate() - 364 - today.getUTCDay());
+  const weeks = [];
+  for (let w = 0, t = new Date(start); t <= today; w++) {
+    const wk = [];
+    for (let j = 0; j < 7 && t <= today; j++, t.setUTCDate(t.getUTCDate() + 1)) wk.push({ weekday: j, date: t.toISOString().slice(0, 10), contributionCount: Object.entries(cal).filter(([ts]) => new Date(ts * 1000).toISOString().slice(0, 10) === t.toISOString().slice(0, 10)).reduce((s, [, c]) => s + c, 0) });
+    weeks.push(wk);
+  }
+  const days = weeks.flat();
+  let run = 0, maxRun = 0;
+  days.forEach((x) => { run = x.contributionCount ? run + 1 : 0; maxRun = Math.max(maxRun, run); });
+  const solved = by(d.matchedUser.submitStats.acSubmissionNum, "count"), subs = by(d.matchedUser.submitStats.acSubmissionNum, "submissions"), all = by(d.allQuestionsCount, "count");
+  return { weeks, solved, all, active: d.matchedUser.userCalendar.totalActiveDays, maxRun, submissions: days.reduce((s, x) => s + x.contributionCount, 0), subs };
+}
+function leetSvg(L, user) {
+  const K = kit("#FFA116");
+  const { T, fitText, delay, svg } = K;
+  const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35), dark = "#B45F06";
+  const H = 460;
+  const big = (x, y, v, lab, sm, w = 110) => `<text x="${x}" y="${y}" font-size="24" font-weight="800" fill="${dark}">${T(String(v))}</text>${fitText(x, y + 17, lab, w, { size: 11, weight: 700, fill: "#16130D" })}${fitText(x, y + 32, sm, w + 20, { size: 10, fill: "#8A8372" })}`;
+  const R = 44, C = 2 * Math.PI * R, frac = L.solved.All / (L.all.All || 1);
+  const row = (y, name, color) => `<text x="708" y="${y}" font-size="11" font-weight="700" fill="${color}">${T(name)}</text><text x="708" y="${y + 17}" font-size="16" font-weight="800" fill="#16130D">${T(String(L.solved[name]))}<tspan font-size="11" font-weight="500" fill="#8A8372"> / ${T(String(L.all[name]))}</tspan></text>`;
+  let b = `<g class="r">${isoCells(L.weeks, ["#262626", "#6b3a10", "#a85a14", "#e07a1a", hi])}</g>`;
+  b += `<g class="r">${fitText(40, 52, "› leetcode submissions --visualize", 440, { size: 14, weight: 600, mono: true, fill: sub })}</g>`;
+  b += `<g class="r" ${delay(2)}>${fitText(556, 40, "Problems Solved", 200, { size: 13, weight: 700 })}${lite(556, 52, 288, 144)}
+<g transform="translate(626 124)"><circle r="${R}" fill="none" stroke="#EFE3CC" stroke-width="8"/>${frac ? `<circle r="${R}" fill="none" stroke="${dark}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(C * frac).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90)"/>` : ""}
+<text y="4" text-anchor="middle" font-size="26" font-weight="800" fill="${dark}">${T(String(L.solved.All))}</text>${fitText(0, 20, "Solved", 60, { size: 11, weight: 700, fill: "#16130D", anchor: "middle" })}</g>
+${row(84, "Easy", "#1C8C8C")}${row(120, "Medium", dark)}${row(156, "Hard", "#C0392B")}
+${fitText(844, 216, `${L.submissions} submissions in 365 days`, 260, { size: 11, fill: "#6E6E6E", anchor: "end" })}</g>`;
+  b += `<g class="r" ${delay(3)}>${fitText(30, H - 100, "Activity", 120, { size: 13, weight: 700 })}${lite(30, H - 90, 262, 78)}${big(48, H - 58, L.active, "Active Days", "Last 365 days")}${big(166, H - 58, L.maxRun, "Max Streak", "Consecutive days")}</g>`;
+  b += fitText(846, H - 14, `@${user}`, 160, { size: 10, fill: "#4a4a4a", anchor: "end" });
+  const tint = `<rect width="880" height="${H}" rx="24" fill="${hi}" fill-opacity=".04"/><rect x=".5" y=".5" width="879" height="${H - 1}" rx="24" fill="none" stroke="${hi}" stroke-opacity=".22"/>`;
+  return svg(880, H, `leetcode: ${L.solved.All} of ${L.all.All} problems solved`, tint + b);
+}
+
 // Изометрические «башни» вкладов за год (данные — gh api graphql, нужен вход в gh)
 function contribData() {
   const q = 'query{user(login:"sailxx"){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount weekday}}}}}}';
@@ -204,7 +267,7 @@ function contribSvg() {
   const { weeks, total } = contribData();
   const days = weeks.flat();
   const hi = K.A.hi, sub = mix(hi, "#FFFFFF", 0.35);
-  const max = Math.max(...days.map((d) => d.contributionCount), 1);
+  const max = Math.max(...days.map((d) => d.contributionCount), 1); // для Best day
   const best = days.reduce((a, d) => (d.contributionCount > a.contributionCount ? d : a), days[0]);
   const last7 = days.slice(-7).reduce((s, d) => s + d.contributionCount, 0);
   let longest = [0, 0, 0], run = 0;
@@ -214,25 +277,11 @@ function contribSvg() {
   let s0 = e;
   while (s0 >= 0 && days[s0].contributionCount) s0--;
   const cur = e - s0;
-  const W = [14.2, 5.9], D = [5, -2.8], OX = 36, OY = 112, MAXH = 62;
   const shade = ["#1b1b1b", "#5e4513", "#93701d", "#c9952b", hi];
-  const lvl = (n) => (n === 0 ? 0 : Math.min(4, Math.ceil(Math.sqrt(n / max) * 4)));
-  const pt = (i, j, h = 0) => [OX + i * W[0] + j * D[0], OY + i * W[1] + j * D[1] - h];
-  const poly = (pts, fill, stroke) => `<polygon points="${pts.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}"${stroke ? ` stroke="${stroke}" stroke-width=".6"` : ""}/>`;
-  let cells = "";
-  weeks.forEach((wk, i) => {
-    [...wk].reverse().forEach((d) => {
-      const j = d.weekday, n = d.contributionCount, l = lvl(n), h = n ? 5 + Math.sqrt(n / max) * MAXH : 0;
-      const a = pt(i, j), b = pt(i + 0.88, j), c = pt(i + 0.88, j + 0.88), dd = pt(i, j + 0.88);
-      if (!n) { cells += poly([a, b, c, dd], "#262626", "#3a3a3a"); return; }
-      const col = shade[l], at = pt(i, j, h), bt = pt(i + 0.88, j, h), ct = pt(i + 0.88, j + 0.88, h), dt = pt(i, j + 0.88, h);
-      cells += poly([a, b, bt, at], mix(col, "#000000", 0.35)) + poly([b, c, ct, bt], mix(col, "#000000", 0.55)) + poly([at, bt, ct, dt], col);
-    });
-  });
+  const cells = isoCells(weeks, shade);
   const H = 460;
   let b = `<g class="r" shape-rendering="geometricPrecision">${cells}</g>`;
   b += `<g class="r">${fitText(40, 52, "› git contributions --visualize", 400, { size: 14, weight: 600, mono: true, fill: sub })}</g>`;
-  const lite = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#FBF6EA" stroke="#E6D9B8"/>`;
   const stat = (x, y, big, lab, sm) => `<text x="${x}" y="${y}" font-size="24" font-weight="800" fill="#B7770A">${T(String(big))}</text>${fitText(x, y + 17, lab, 110, { size: 11, weight: 700, fill: "#16130D" })}${fitText(x, y + 32, sm, 130, { size: 10, fill: "#8A8372" })}`;
   const rng = `${fmtD(days[0].date)} → ${fmtD(days[days.length - 1].date)}`;
   b += `<g class="r" ${delay(2)}>${fitText(556, 40, "Contributions", 200, { size: 13, weight: 700 })}${lite(556, 52, 288, 78)}${stat(574, 84, total, "Total", rng)}${stat(676, 84, last7, "This week", "last 7 days")}${stat(768, 84, best.contributionCount, "Best day", fmtD(best.date))}${fitText(844, 148, `Average: ${(total / days.length).toFixed(2)} / day`, 220, { size: 11, fill: "#6E6E6E", anchor: "end" })}</g>`;
@@ -258,7 +307,9 @@ function footer(color, mode) {
 const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
-const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
+const LEET_USER = "qXESYLd6R6";
+const LEET = await leetData(LEET_USER);
+const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"], ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
