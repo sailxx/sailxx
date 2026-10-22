@@ -7,7 +7,7 @@ export const PROJECTS = [
   ["traymixer", "TrayMixer", "TrayMixer"], ["budila", "Budila", "Budila"], ["flipt", "Flipt", "Flipt"],
   ["ember", "Ember", "Ember"], ["calc", "Okto Calculator", "Okto-Calculator"], ["lifekalendar", "LifeKalendar", "LifeKalendar"],
   ["marks", "Marks", "Marks"], ["vscode", "Okto theme for VS Code", "Okto-vscode-theme"],
-  ["arhitector", "Arhitector AI", "Arhitector-AI"], ["site", "All apps", "sailxx.github.io"],
+  ["arhitector", "Arhitector AI", "Arhitector-AI"]
 ];
 
 const dots = (n, on) => { let s = ""; for (let j = 0; j < 3; j++) for (let i = 0; i < 5; i++) { const k = j * 5 + i; s += `<circle cx="${33 + i * 9 + 3}" cy="${40.5 + j * 9}" r="3" fill="${on(k)}"/>`; } return s; };

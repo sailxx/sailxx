@@ -19,7 +19,6 @@
   <a href="https://github.com/sailxx/Marks"><img src="assets/logos/marks.svg" width="56" height="56" alt="Marks" title="Marks"></a>
   <a href="https://github.com/sailxx/Okto-vscode-theme"><img src="assets/logos/vscode.svg" width="56" height="56" alt="Okto theme for VS Code" title="Okto theme for VS Code"></a>
   <a href="https://github.com/sailxx/Arhitector-AI"><img src="assets/logos/arhitector.svg" width="56" height="56" alt="Arhitector AI" title="Arhitector AI"></a>
-  <a href="https://github.com/sailxx/sailxx.github.io"><img src="assets/logos/site.svg" width="56" height="56" alt="All apps" title="All apps"></a>
 </p>
 
 <p align="center">
