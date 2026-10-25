@@ -318,7 +318,7 @@ const HERO = { glow: true, tint: true, rainbow: true };
 fs.mkdirSync(OUT, { recursive: true });
 const LEET_USER = "qXESYLd6R6";
 const LEET = await leetData(LEET_USER).catch((e) => (console.warn("leetcode: пропущено,", e.message), null));
-const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ...(LEET ? [["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"]] : []), ["footer.svg", () => footer("#F2B84B"), "#F2B84B"]];
+const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ...(LEET ? [["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"]] : [])];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
