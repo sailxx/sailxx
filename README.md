@@ -10,15 +10,6 @@
   <a href="https://leetcode.com/u/qXESYLd6R6/"><img src="assets/leetcode.svg" width="100%" alt="leetcode submissions --visualize: problems solved and activity"></a>
 </p>
 
-```bash
-> cat current-focus.txt
-```
-
-```text
-Building: FITTER — a Telegram bot that counts calories and macros from a photo of your meal.
-Exploring: AI products, Android apps with Kotlin and Compose, and minimal open-source tools.
-```
-
 <p align="center">
   <a href="https://github.com/sailxx/Okto"><img src="assets/logos/okto.svg" width="56" height="56" alt="Okto" title="Okto"></a>
   <a href="https://github.com/sailxx/Okto-Notes"><img src="assets/logos/oktonotes.svg" width="56" height="56" alt="Okto Notes" title="Okto Notes"></a>
@@ -33,6 +24,3 @@ Exploring: AI products, Android apps with Kotlin and Compose, and minimal open-s
   <a href="https://github.com/sailxx/Arhitector-AI"><img src="assets/logos/arhitector.svg" width="56" height="56" alt="Arhitector AI" title="Arhitector AI"></a>
 </p>
 
-<p align="center">
-  <a href="https://t.me/arkhitkovv"><img src="assets/footer.svg" width="100%" alt="Say hi on Telegram: @arkhitkovv"></a>
-</p>
