@@ -185,10 +185,10 @@ function githubStats() {
 
 const LEET_USER = "sailixx";
 const FEATURED = [
-  ["Tobi", "A desktop companion for monitoring AI coding agents and responding to requests."],
-  ["TrayMixer", "A system tray mixer for switching audio devices and adjusting app volume."],
-  ["Lumen", "A GNOME Shell extension for per-display brightness control."],
-  ["Okto", "A planner that brings tasks, calendars and focus sessions together."],
+  ["FITTER-AI", "A Telegram bot that estimates calories from a photo of your meal."],
+  ["Okto", "A planner for Android, Windows and web with tasks, calendar and a focus timer."],
+  ["Tobi", "Monitor Claude Code, Codex and Cursor on Windows 11 and approve actions in one click."],
+  ["TrayMixer", "A system tray mixer for per-app volume on Windows 11 and Linux (preview)."],
 ];
 const INFO = [
   ["#", "vlad@sailxx"],
