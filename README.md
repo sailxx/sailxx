@@ -4,12 +4,15 @@
 
 <p align="center"><a href="https://raw.githubusercontent.com/sailxx/Sailxx/main/assets/hero-motion.svg">▶ Play animation</a></p>
 
-## Featured projects
+<p align="center">
+  <img src="assets/featured.svg" width="100%" alt="Featured projects: Tobi monitors AI coding agents, TrayMixer controls audio from the system tray, Lumen adjusts brightness per display, and Okto brings tasks, calendars, and focus sessions together.">
+</p>
 
-- [**Tobi**](https://github.com/sailxx/Tobi) — a desktop companion for monitoring AI coding agents and responding to their requests.
-- [**TrayMixer**](https://github.com/sailxx/TrayMixer) — a system tray mixer for switching audio devices and adjusting app volume.
-- [**Lumen**](https://github.com/sailxx/Lumen) — a GNOME Shell extension for changing brightness independently on each display.
-- [**Okto**](https://github.com/sailxx/Okto) — a planner that brings tasks, calendars and focus sessions together.
+[Tobi](https://github.com/sailxx/Tobi) · [TrayMixer](https://github.com/sailxx/TrayMixer) · [Lumen](https://github.com/sailxx/Lumen) · [Okto](https://github.com/sailxx/Okto)
+
+## About me
+
+I'm Vlad, a young, ambitious developer who loves technology and programming. I'm always learning, sharpening my skills, and putting what I learn into practice. You'll find me on GitHub most days, working on my repositories, shipping updates, and experimenting with new ideas.
 
 ## Contact
 

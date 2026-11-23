@@ -167,16 +167,29 @@ function character(x0, y0, px) {
   return `<g class="portrait-head">${head}<g class="portrait-eyes">${eyes}</g><g class="portrait-lids">${lids}</g></g>
 ${body}<g class="portrait-cup">${arm}${steam}</g>`;
 }
-const gh = (...a) => execFileSync("gh", ["api", ...a], { encoding: "utf8" }).trim();
-const STATS = (() => {
-  try {
-    const repos = JSON.parse(gh("users/sailxx")).public_repos;
-    const stars = JSON.parse(gh("users/sailxx/repos?per_page=100&type=owner")).reduce((n, x) => n + x.stargazers_count, 0);
-    const commits = JSON.parse(gh("search/commits?q=author:sailxx")).total_count;
-    return [String(repos), String(stars), String(commits)];
-  } catch { return ["17", "15", "607"]; }
-})();
+const gh = (...a) => execFileSync("gh", ["api", ...a], { encoding: "utf8", timeout: 60_000 }).trim();
+function githubStats() {
+  const repos = JSON.parse(gh("users/sailxx")).public_repos;
+  const repoPages = JSON.parse(gh("users/sailxx/repos?per_page=100&type=owner", "--paginate", "--slurp"));
+  const stars = repoPages.flat().reduce((n, repo) => n + repo.stargazers_count, 0);
+  const commits = JSON.parse(gh("search/commits?q=author%3Asailxx+is%3Apublic&per_page=1"));
+  if (commits.incomplete_results || ![repos, stars, commits.total_count].every(Number.isSafeInteger)) {
+    throw new Error("GitHub returned incomplete profile statistics.");
+  }
+  return [
+    ["Repos", String(repos)],
+    ["Stars", String(stars)],
+    ["Commits", String(commits.total_count)],
+  ];
+}
+
 const LEET_USER = "sailixx";
+const FEATURED = [
+  ["Tobi", "A desktop companion for monitoring AI coding agents and responding to requests."],
+  ["TrayMixer", "A system tray mixer for switching audio devices and adjusting app volume."],
+  ["Lumen", "A GNOME Shell extension for per-display brightness control."],
+  ["Okto", "A planner that brings tasks, calendars and focus sessions together."],
+];
 const INFO = [
   ["#", "vlad@sailxx"],
   ["OS", "Windows 11, Fedora Linux"], ["IDE", "VS Code, Android Studio"],
@@ -185,16 +198,16 @@ const INFO = [
   ["-"],
   ["Hobbies.Software", "UI design, games"], ["Hobbies.Hardware", "PC building"],
   ["#", "Projects"],
-  ["Featured", "Tobi, TrayMixer, Lumen, Okto"],
+  ["Featured", FEATURED.map(([name]) => name).join(", ")],
   ["#", "Contact"],
   ["Telegram", "@arkhitkovv", true], ["LeetCode", "@" + LEET_USER],
   ["#", "GitHub Stats"],
-  ["Repos", STATS[0]], ["Stars", STATS[1]], ["Commits", STATS[2]],
 ];
-function heroNeo({ autoplay = false } = {}) {
+function heroNeo(stats, { autoplay = false } = {}) {
   const K = kit("#F2B84B");
   const { width, fitText, delay, svg } = K;
-  const H = 64 + INFO.reduce((n, r) => n + (r[0] === "-" ? 12 : r[0] === "#" ? 33 : 21), 0) - 9 + 36, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 6;
+  const rows = [...INFO, ...stats];
+  const H = 64 + rows.reduce((n, r) => n + (r[0] === "-" ? 12 : r[0] === "#" ? 33 : 21), 0) - 9 + 36, X0 = 296, X1 = 840, SZ = 13, STEP = 21, PX = 6;
   const hi = "#784b18", sub = "#42424a";
   let b = `<style>
 .portrait-head,.portrait-cup{transform-box:fill-box;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
@@ -221,7 +234,7 @@ ${autoplay ? "" : `@media (prefers-reduced-motion:reduce){
   b += `<g shape-rendering="crispEdges" class="r">${character(cx, cy, PX)}</g>`;
   b += `<rect x="268" y="40" width="1" height="${H - 80}" fill="#e2e2e6"/>`;
   let y = 64, i = 0;
-  for (const [k, v, em] of INFO) {
+  for (const [k, v, em] of rows) {
     if (k === "-") { y += 12; continue; }
     const d = delay(2 + i++ * 0.5);
     if (k === "#") {
@@ -237,6 +250,25 @@ ${autoplay ? "" : `@media (prefers-reduced-motion:reduce){
     y += STEP;
   }
   return svg(880, H, "Vlad (sailxx) — developer profile, projects, and contact information.", b, "", { light: true });
+}
+
+function featuredProjects() {
+  const { width, fitText, svg } = kit("#F2B84B");
+  const left = 40, right = 840, size = 13, accent = "#784b18";
+  const title = "Featured projects";
+  const headingEnd = left + width(title, size, 800, { mono: true }) + 12;
+  let body = fitText(left, 42, title, 200, { size, weight: 800, mono: true, fill: accent });
+  body += `<line x1="${headingEnd.toFixed(1)}" y1="38" x2="${right}" y2="38" stroke="${accent}" stroke-opacity=".28"/>`;
+  for (const [i, [name, description]] of FEATURED.entries()) {
+    const y = 72 + i * 25;
+    const start = left + width(name, size, 700, { mono: true }) + 10;
+    const end = right - width(description, size, 500, { mono: true }) - 10;
+    body += fitText(left, y, name, 96, { size, weight: 700, mono: true, fill: accent });
+    body += `<line x1="${start.toFixed(1)}" y1="${y - 3}" x2="${end.toFixed(1)}" y2="${y - 3}" stroke="#c3c3c9" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0.1 5"/>`;
+    body += fitText(right, y, description, 700, { size, weight: 500, mono: true, fill: "#202024", anchor: "end" });
+  }
+  const summary = FEATURED.map(([name, description]) => `${name} — ${description}`).join(" ");
+  return svg(880, 184, `${title}. ${summary}`, body, "", { light: true });
 }
 
 // Изометрическая сетка: weeks — колонки по 7 дней {weekday, contributionCount}; shade — 5 цветов от пустого к максимуму
@@ -354,9 +386,17 @@ function footer(color, mode) {
 // ---------- сборка: цвет проекта в свечении, фоне, рамке, имени и кнопке ----------
 const CARD = { pill: "accent", chev: true, tint: true, name: true };
 const HERO = { glow: true, tint: true, rainbow: true };
+const stats = githubStats();
 fs.mkdirSync(OUT, { recursive: true });
 const LEET = await leetData(LEET_USER).catch((e) => (console.warn("leetcode: пропущено,", e.message), null));
-const jobs = [["hero.svg", () => heroNeo(), "#F2B84B"], ["hero-motion.svg", () => heroNeo({ autoplay: true }), "#F2B84B"], ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]), ["contrib.svg", () => contribSvg(), "#F2B84B"], ...(LEET ? [["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"]] : [])];
+const jobs = [
+  ["hero.svg", () => heroNeo(stats), "#F2B84B"],
+  ["hero-motion.svg", () => heroNeo(stats, { autoplay: true }), "#F2B84B"],
+  ["featured.svg", featuredProjects, "#F2B84B"],
+  ...P.map((p) => [`${p.id}.svg`, () => cardE(p, CARD), p.color]),
+  ["contrib.svg", () => contribSvg(), "#F2B84B"],
+  ...(LEET ? [["leetcode.svg", () => leetSvg(LEET, LEET_USER), "#FFA116"]] : []),
+];
 for (const [name, render, color] of jobs) await kit(color).build(OUT, { [name]: () => ({ [name]: render() }) });
 console.log(`логотипов: ${buildLogos(OUT + "/logos", LOGOS)}`);
 console.log(`${jobs.length} файлов → ${OUT}`);
