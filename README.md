@@ -1,8 +1,6 @@
 <p align="center">
-  <a href="https://raw.githubusercontent.com/sailxx/Sailxx/main/assets/hero-motion.svg"><img src="assets/hero.svg" width="100%" alt="Vlad (sailxx) — developer profile, projects, and contact information."></a>
+  <img src="assets/hero.svg" width="100%" alt="Vlad (sailxx) — developer profile, projects, and contact information.">
 </p>
-
-<p align="center"><a href="https://raw.githubusercontent.com/sailxx/Sailxx/main/assets/hero-motion.svg">▶ Play animation</a></p>
 
 <p align="center">
   <img src="assets/featured.svg" width="100%" alt="Featured projects: FITTER-AI estimates calories from meal photos, Okto helps you plan your day, Tobi monitors AI coding agents, and TrayMixer controls per-app volume from the system tray.">
